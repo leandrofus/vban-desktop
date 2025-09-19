@@ -1,0 +1,221 @@
+<schemalist>
+    <enum id="org.freedesktop.IBus.Chewing.conversion-engine-enum">
+        <value nick="simple" value="0"/>
+        <value nick="chewing" value="1"/>
+        <value nick="fuzzy-chewing" value="2"/>
+    </enum>
+    <schema id="org.freedesktop.IBus.Chewing" path="/desktop/ibus/engine/chewing/" gettext-domain="ibus-chewing">
+        <key name="kb-type" type="s">
+            <choices>
+                <choice value="default"/>
+                <choice value="hsu"/>
+                <choice value="ibm"/>
+                <choice value="gin_yieh"/>
+                <choice value="eten"/>
+                <choice value="eten26"/>
+                <choice value="dvorak"/>
+                <choice value="dvorak_hsu"/>
+                <choice value="dachen_26"/>
+                <choice value="hanyu"/>
+                <choice value="thl_pinying"/>
+                <choice value="mps2_pinyin"/>
+                <choice value="carpalx"/>
+                <choice value="colemak"/>
+                <choice value="colemak_dh_ansi"/>
+                <choice value="colemak_dh_orth"/>
+                <choice value="workman"/>
+            </choices>
+            <default l10n="messages">"default"</default>
+            <summary>Keyboard Type</summary>
+            <description>
+                Select Zhuyin keyboard layout
+            </description>
+        </key>
+        <key name="sel-keys" type="s">
+            <choices>
+                <choice value="1234567890"/>
+                <choice value="asdfghjkl;"/>
+                <choice value="asdfzxcv89"/>
+                <choice value="asdfjkl789"/>
+                <choice value="aoeu;qjkix"/>
+                <choice value="aoeuhtnsid"/>
+                <choice value="aoeuidhtns"/>
+                <choice value="1234qweras"/>
+            </choices>
+            <default>"1234567890"</default>
+            <summary>Selection keys</summary>
+            <description>
+                Keys used to select candidate. For example "asdfghjkl;", press 'a' to select the 1st candidate, 's' for 2nd, and so on.
+            </description>
+        </key>
+        <key name="show-systray" type="b">
+            <default>true</default>
+            <summary>Show systray icons (deprecated)</summary>
+            <description>
+                On: Show Chinese/English and Full/Half shape status as a systray icon
+                Off: Do not show the status icon
+            </description>
+        </key>
+        <key name="auto-shift-cur" type="b">
+            <default>true</default>
+            <summary>Auto move cursor</summary>
+            <description>
+                Automatically move the cursor to the next character after selection
+            </description>
+        </key>
+        <key name="add-phrase-direction" type="b">
+            <default>true</default>
+            <summary>Add phrase before the cursor</summary>
+            <description>
+                Use Ctrl + Numbers (2-9) to add new phrase before the cursor
+            </description>
+        </key>
+        <key name="clean-buffer-focus-out" type="b">
+            <default>false</default>
+            <summary>Clean pre-edit buffer when focus out</summary>
+            <description>
+                On: Clean pre-edit buffer when focus out to prevent program crash
+                Off: Keep what you already type for convenience
+            </description>
+        </key>
+        <key name="easy-symbol-input" type="b">
+            <default>true</default>
+            <summary>Easy symbol input</summary>
+            <description>
+                Press shift to input Chinese punctuation symbols
+            </description>
+        </key>
+        <key name="esc-clean-all-buf" type="b">
+            <default>false</default>
+            <summary>Esc clean all buffer</summary>
+            <description>
+                Escape key cleans the text in pre-edit-buffer
+            </description>
+        </key>
+        <key name="enable-fullwidth-toggle-key" type="b">
+            <default>true</default>
+            <summary>Enable fullwidth toggle key</summary>
+            <description>
+                Enable fullwidth/halfwidth toggle key (Shift+Space)
+            </description>
+        </key>
+        <key name="max-chi-symbol-len" type="i">
+            <range min="0" max="39"/>
+            <default>20</default>
+            <summary>Maximum Chinese characters</summary>
+            <description>
+                Maximum Chinese characters in pre-edit buffer, not including inputing Zhuyin symbols.
+            </description>
+        </key>
+        <key name="default-use-english-mode" type="b">
+            <default>false</default>
+            <summary>Switch to alphanumeric mode after startup</summary>
+            <description>
+                Automatically switch to alphanumeric mode after startup. This mode is sutible when using Chewing as the only IM.
+            </description>
+        </key>
+        <key name="chi-eng-mode-toggle" type="s">
+            <choices>
+                <choice value="disable"/>
+                <choice value="caps_lock"/>
+                <choice value="shift"/>
+                <choice value="shift_l"/>
+                <choice value="shift_r"/>
+            </choices>
+            <default l10n="messages">"caps_lock"</default>
+            <summary>Chinese/Alphanumeric Mode Toggle Key</summary>
+            <description>
+                Toggle Chinese/Alphanumeric mode with key
+            </description>
+        </key>
+        <key name="default-english-case" type="s">
+            <choices>
+                <choice value="no default"/>
+                <choice value="lowercase"/>
+                <choice value="uppercase"/>
+            </choices>
+            <default l10n="messages">"lowercase"</default>
+            <summary>Default English letter case
+(Only effective when Caps Lock is the toggle key)</summary>
+            <description>
+                no control: No default letter case. Not recommend if you use multiple keyboards or synergy
+                lowercase: Default to lowercase, press shift for uppercase.
+                uppercase: Default to uppercase, press shift for lowercase.
+            </description>
+        </key>
+        <key name="sync-caps-lock" type="s">
+            <choices>
+                <choice value="disable"/>
+                <choice value="keyboard"/>
+                <choice value="input method"/>
+            </choices>
+            <default l10n="messages" context="Sync">"keyboard"</default>
+            <summary>Sync between CapsLock and IM</summary>
+            <description>
+                Occasionally, the CapsLock status does not match the IM, this option determines how these status be synchronized. Valid values:
+                "disable": Do nothing
+                "keyboard": IM status follows keyboard status
+                "IM": Keyboard status follows IM status
+            </description>
+        </key>
+        <key name="notify-mode-change" type="b">
+            <default>true</default>
+            <summary>Notify when Chinese/English or Fullwidth/Halfwidth mode changes</summary>
+            <description>
+                Display a simple notification when an input mode change is triggered by user input.
+            </description>
+        </key>
+        <key name="plain-zhuyin" type="b">
+            <default>false</default>
+            <summary>Plain Zhuyin mode (deprecated)</summary>
+            <description>
+                In plain Zhuyin mode, automatic candidate selection and related options are disabled or ignored.
+                Deprecated option - use conversion-engine instead.
+            </description>
+        </key>
+        <key name="conversion-engine" enum="org.freedesktop.IBus.Chewing.conversion-engine-enum">
+            <default>"chewing"</default>
+            <summary>Conversion mode</summary>
+            <description>
+                In Simple mode, automatic candidate selection and related options are disabled or ignored.
+                In FuzzyChewing mode, tones or even parts of bopomofo can be omitted.
+            </description>
+        </key>
+        <key name="cand-per-page" type="u">
+            <range min="4" max="10"/>
+            <default>5</default>
+            <summary>Candidate per page</summary>
+            <description>
+                Number of candidate per page.
+            </description>
+        </key>
+        <key name="show-page-number" type="b">
+            <default>false</default>
+            <summary>Show page number</summary>
+            <description>
+                Display the page number of the candidate list.
+            </description>
+        </key>
+        <key name="phrase-choice-from-last" type="b">
+            <default>true</default>
+            <summary>Choose phrases from backward</summary>
+            <description>
+                Open candidate list from the back of a phrase, without moving the cursor to the front.
+            </description>
+        </key>
+        <key name="space-as-selection" type="b">
+            <default>false</default>
+            <summary>Space to select</summary>
+            <description>
+                Press Space to select the candidate.
+            </description>
+        </key>
+        <key name="vertical-lookup-table" type="b">
+            <default>false</default>
+            <summary>Vertical Lookup Table</summary>
+            <description>
+                Use vertical lookup table.
+            </description>
+        </key>
+    </schema>
+</schemalist>

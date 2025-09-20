@@ -6,7 +6,6 @@ from PyQt5 import QtWidgets, QtCore
 from pystray import Icon, MenuItem, Menu
 from PIL import Image, ImageDraw
 from vban_config import config, load_config, save_config
-from webserver import run_webserver
 
 vban_process = None
 icon_instance = None
@@ -30,7 +29,7 @@ def run_vban_receptor(host=None, port=None, stream=None, vban_path=None, stop=Fa
         vban_process.wait()
 
     if not shutil.which(vban_path):
-        print(f"[WARN] VBAN receptor no encontrado en {vban_path}. Ignorando ejecución.")
+        print(f"[WARN] VBAN receptor not found at {vban_path}. Skipping execution.")
         return False
 
     cmd = [vban_path, "-i", host, "-p", port, "-s", stream, "-b", "alsa"]
@@ -49,10 +48,10 @@ class ConfigWindow(QtWidgets.QWidget):
         self.stream_input = QtWidgets.QLineEdit(config["stream"])
         self.vban_path_input = QtWidgets.QLineEdit(config["vban_path"])
         layout.addRow("Host:", self.host_input)
-        layout.addRow("Puerto:", self.port_input)
+        layout.addRow("Port:", self.port_input)
         layout.addRow("Stream:", self.stream_input)
         layout.addRow("VBAN Path:", self.vban_path_input)
-        save_btn = QtWidgets.QPushButton("Guardar y Reiniciar")
+        save_btn = QtWidgets.QPushButton("Save and Restart")
         save_btn.clicked.connect(self.save_and_restart)
         layout.addRow(save_btn)
         self.setLayout(layout)
@@ -72,7 +71,8 @@ class ConfigWindow(QtWidgets.QWidget):
         })
         save_config()
         threading.Thread(target=run_vban_receptor, args=(config["host"], config["port"], config["stream"], config["vban_path"]), daemon=True).start()
-        QtWidgets.QMessageBox.information(self, "VBAN", "VBAN reiniciado con nueva configuración")
+        QtWidgets.QMessageBox.information(self, "VBAN", "VBAN restarted with the new configuration.")
+        self.hide()
 
     def cleanup_on_close(self):
         if icon_instance:
@@ -108,8 +108,8 @@ def on_quit(icon, item=None):
 def tray_thread():
     global icon_instance
     menu = Menu(
-        MenuItem("Configurar VBAN", show_config),
-        MenuItem("Salir", on_quit)
+        MenuItem("Configure VBAN", show_config),
+        MenuItem("Exit", on_quit)
     )
     icon_instance = Icon("VBAN Tray", create_image(), "VBAN", menu)
     icon_instance.run()
@@ -117,7 +117,6 @@ def tray_thread():
 # MAIN
 if __name__ == "__main__":
     load_config()
-    threading.Thread(target=run_webserver, args=("127.0.0.1", 5000, run_vban_receptor), daemon=True).start()
     threading.Thread(target=run_vban_receptor, daemon=True).start()
     app_qt = QtWidgets.QApplication(sys.argv)
     window = ConfigWindow()

@@ -2,9 +2,9 @@
 
 A lightweight desktop application to manage VBAN streams with a GUI and system tray integration. Built with **Python**, **PyQt5**, **pystray**, and **Pillow**.  
 
-> ⚠️ **Currently, this application only supports Linux. Windows support is not yet implemented.**
+ ⚠️ **Currently, this application only supports Linux. Windows support is not yet implemented.**
 
----
+
 
 ## Features
 
@@ -15,7 +15,7 @@ A lightweight desktop application to manage VBAN streams with a GUI and system t
   - Quit application
 - Simple configuration persistence via `vban_config.py`.
 
----
+
 
 ## Requirements
 
@@ -26,6 +26,7 @@ A lightweight desktop application to manage VBAN streams with a GUI and system t
 - Dependencies listed in `requirements.txt`:
 
 ## Installation
+
 
 1. Clone this repository:
 
@@ -47,6 +48,7 @@ source venv/bin/activate
 
 Usage
 
+
 Run the application:
 
 ```bash
@@ -66,8 +68,11 @@ git push origin feature/my-feature
 
 License
 
+
 MIT License © 2025 Leandro Fusco
 
 Contact
+
+---
 
 For questions or issues, reach out to Leandro Fusco or open an issue in the GitHub repository.

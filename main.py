@@ -48,7 +48,7 @@ class ConfigWindow(QtWidgets.QWidget):
         self.stream_input = QtWidgets.QLineEdit(config["stream"])
         self.vban_path_input = QtWidgets.QLineEdit(config["vban_path"])
         layout.addRow("Host:", self.host_input)
-        layout.addRow("Puerto:", self.port_input)
+        layout.addRow("Port:", self.port_input)
         layout.addRow("Stream:", self.stream_input)
         layout.addRow("VBAN Path:", self.vban_path_input)
         save_btn = QtWidgets.QPushButton("Save and Restart")

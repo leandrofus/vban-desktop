@@ -73,6 +73,5 @@ MIT License © 2025 Leandro Fusco
 
 Contact
 
----
 
 For questions or issues, reach out to Leandro Fusco or open an issue in the GitHub repository.

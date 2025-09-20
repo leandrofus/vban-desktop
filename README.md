@@ -46,7 +46,7 @@ source venv/bin/activate
 
 4. Configure VBAN path and settings in vban_config.py, or via the GUI.
 
-Usage
+## Usage
 
 
 Run the application:
@@ -66,12 +66,12 @@ git push origin feature/my-feature
 ```
 * Use Pull Requests to merge changes into main.
 
-License
+## License
 
 
 MIT License © 2025 Leandro Fusco
 
-Contact
+## Contact
 
 
 For questions or issues, reach out to Leandro Fusco or open an issue in the GitHub repository.

@@ -4,9 +4,9 @@ from pathlib import Path
 CONFIG_FILE = Path.home() / ".vban_config.json"
 
 DEFAULT_CONFIG = {
-    "host": "10.10.0.2",
-    "port": "6980",
-    "stream": "Stream1",
+    "host": "",
+    "port": "",
+    "stream": "",
     "vban_path": "/usr/local/bin/vban_receptor"
 }
 

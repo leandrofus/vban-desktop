@@ -22,7 +22,7 @@ def run_vban_receptor(host=None, port=None, stream=None, vban_path=None, stop=Fa
     host = host or config["host"]
     port = port or config["port"]
     stream = stream or config["stream"]
-    vban_path = vban_path or config.get("vban_path", "/usr/local/bin/vban_receptor")
+    vban_path = vban_path or config.get("vban_path", "./")
 
     if vban_process and vban_process.poll() is None:
         vban_process.terminate()

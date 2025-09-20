@@ -7,7 +7,7 @@ DEFAULT_CONFIG = {
     "host": "",
     "port": "",
     "stream": "",
-    "vban_path": "/usr/local/bin/vban_receptor"
+    "vban_path": "./vban_receptor"
 }
 
 config = DEFAULT_CONFIG.copy()
